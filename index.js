@@ -9,8 +9,8 @@ const questions = [
         type: 'input',
         name: 'title',
         message: 'What is the title of your project?',
-        validate: nameInput => {
-            if (nameInput) {
+        validate: titleInput => {
+            if (titleInput) {
                 return true;
             } else {
                 return false;
@@ -21,8 +21,8 @@ const questions = [
         type: 'input',
         name: 'description',
         message: 'Please provide a description of your project.',
-        validate: nameInput => {
-            if (nameInput) {
+        validate: descriptionInput => {
+            if (descriptionInput) {
                 return true;
             } else {
                 return false;
@@ -34,8 +34,8 @@ const questions = [
         type: 'input',
         name: 'installation',
         message: 'What are the steps required to install your project?',
-        validate: nameInput => {
-            if (nameInput) {
+        validate: installationInput => {
+            if (installationInput) {
                 return true;
             } else {
                 return false;
@@ -47,8 +47,8 @@ const questions = [
         type: 'input',
         name: 'usage',
         message: 'Provide instructions on how to use your project.',
-        validate: nameInput => {
-            if (nameInput) {
+        validate: usageInput => {
+            if (usageInput) {
                 return true;
             } else {
                 return false;
@@ -59,8 +59,8 @@ const questions = [
         type: 'input',
         name: 'contributing',
         message: 'Please provide guidelines for other developers to contribute to your project.',
-        validate: nameInput => {
-            if (nameInput) {
+        validate: contributionInput => {
+            if (contributionInput) {
                 return true;
             } else {
                 return false;
@@ -71,8 +71,8 @@ const questions = [
         type: 'input',
         name: 'tests',
         message: 'Please provide instructions on how to test your project.',
-        validate: nameInput => {
-            if (nameInput) {
+        validate: testInput => {
+            if (testInput) {
                 return true;
             } else {
                 return false;
@@ -80,12 +80,18 @@ const questions = [
         }
     },
     {
+        type: 'confirm',
+        name: 'confirmLicense',
+        message: 'Would you like to include a license?',
+        default: false,
+    },
+    {
         type: 'list',
         name: 'license',
         message: 'Please select a license for your project.',
         choices: ['MIT', 'Apache', 'GPL', 'BSD', 'None'],
-        validate: nameInput => {
-            if (nameInput) {
+        when: ({confirmLicense}) => {
+            if (confirmLicense) {
                 return true;
             } else {
                 return false;
@@ -95,11 +101,7 @@ const questions = [
 
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
-function init() {}
 
 // Function call to initialize app
 init();
