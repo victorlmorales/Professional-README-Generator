@@ -7,6 +7,42 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const questions = [
     {
         type: 'input',
+        name: 'name',
+        message: 'Please provide your name. You must credit yourself for your work!',
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your GitHub username.',
+        validate: githubInput => {
+            if (githubInput) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your email adress.',
+        validate: emailInput => {
+            if (emailInput) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
         name: 'title',
         message: 'What is the title of your project?',
         validate: titleInput => {
@@ -98,11 +134,10 @@ const questions = [
             }
         }
     },
-
 ];
 
-async function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, err => {
+async function writeToFile(data) {
+    fs.writeFile('./dist/README.md', data, err => {
         if (err) {
             return console.log(err);
         }
@@ -115,7 +150,7 @@ async function init() {
         const data = await inquirer.prompt(questions);
         const markdown = generateMarkdown(data);
 
-        await writeToFile('README.md', markdown);
+        await writeToFile(markdown);
 
     } catch (err) {
         console.log(err);
