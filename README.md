@@ -37,6 +37,7 @@
   ```
   node index.js
   ```
+
   This will prompt you to answer some questions  
   Once you answer all questions your `README.md` file will be created in the `/dist` folder
 
@@ -56,7 +57,7 @@
 
 ## Links
 
-  Video Link: 
+  [Demonstration Video](<https://drive.google.com/file/d/1qOr_XzjAASFFHlpzQ_ew63aTNcQB1xj1/view?usp=sharing>)
 
 ## License
 
