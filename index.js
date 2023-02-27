@@ -101,7 +101,26 @@ const questions = [
 
 ];
 
+async function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
+        if (err) {
+            return console.log(err);
+        }
+        console.log('README.md successfully created!');
+    });
+}
 
+async function init() {
+    try {
+        const data = await inquirer.prompt(questions);
+        const markdown = generateMarkdown(data);
+
+        await writeToFile('README.md', markdown);
+
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 // Function call to initialize app
 init();
